@@ -1,16 +1,22 @@
 {
-   "extends": [
-      "airbnb",
-      "prettier"
-    ],
-    "env": {
-      "jest":true
-    },
-    
-    "rules": {
-      "react/react-in-jsx-scope": "off",
-      "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
-       "trailing-comma": 0 
+  "extends": ["airbnb", "prettier"],
+  "env": {
+    "jest": true
+  },
+  "globals": {
+    "document": true
+  },
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "import/no-named-as-default": 0,
+    "trailing-comma": 0,
+    "react/react-in-jsx-scope": "off"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
     }
-    
+  }
 }
