@@ -42,15 +42,5 @@
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
     "prettier": "^2.8.0"
-  },
-  "husky": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --config .pritterrc --write",
-      "eslint --fix",
-      "git add"
-    ]
   }
 }
