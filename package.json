@@ -42,5 +42,17 @@
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
     "prettier": "^2.8.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --config .prettierrc --write",
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
