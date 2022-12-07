@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/cli": "^7.19.3",
+    "@storybook/addon-knobs": "^6.4.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -48,12 +50,14 @@
     ]
   },
   "devDependencies": {
+    "@mdx-js/react": "^2.1.5",
     "@storybook/addon-actions": "^6.5.14",
     "@storybook/addon-essentials": "^6.5.14",
     "@storybook/addon-interactions": "^6.5.14",
     "@storybook/addon-links": "^6.5.14",
     "@storybook/builder-webpack5": "^6.5.14",
     "@storybook/manager-webpack5": "^6.5.14",
+    "@storybook/mdx2-csf": "^0.0.3",
     "@storybook/node-logger": "^6.5.14",
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.14",
@@ -71,6 +75,9 @@
     "prettier": "^2.8.0",
     "prop-types": "^15.8.1",
     "webpack": "^5.75.0"
+  },
+  "husky": {
+    "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",

@@ -7,8 +7,9 @@
     "document": true
   },
   "rules": {
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "import/no-unresolved": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js",".jsx"] }],
     "import/no-named-as-default": 0,
     "trailing-comma": 0,
     "react/react-in-jsx-scope": "off",
