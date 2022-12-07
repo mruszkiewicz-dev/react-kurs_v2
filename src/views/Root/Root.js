@@ -1,7 +1,11 @@
 import React from 'react';
+import Button from 'components/Button/Button';
 
-function Root() {
-  return <h1>Test</h1>;
-}
+const Root = () => (
+  <>
+    <p>aaa</p>
+    <Button>aa</Button>
+  </>
+);
 
 export default Root;

@@ -7,11 +7,17 @@
     "document": true
   },
   "rules": {
-    "import/no-resolver":0,
+    "import/no-unresolved": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "import/no-named-as-default": 0,
     "trailing-comma": 0,
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function"
+      }
+    ]
   },
   "parserOptions": {
     "ecmaVersion": 2020,
@@ -20,5 +26,13 @@
       "jsx": true
     }
   },
-
+ "settings": {
+  "import/resolver": {
+    "node": {
+      "paths": ["src"],
+      "extensions": [".ts", ".tsx"],
+      "moduleDirectory": ["src", "node_modules"]
+    }
+  }
+}
 }
