@@ -3,8 +3,9 @@ import Button from 'components/Button/Button';
 
 const Root = () => (
   <>
-    <p>aaa</p>
-    <Button>aa</Button>
+    <p>TES</p>
+    <Button>close / Save</Button>
+    <Button secondary>remove</Button>
   </>
 );
 
