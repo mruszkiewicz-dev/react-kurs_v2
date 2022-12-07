@@ -7,6 +7,7 @@
     "document": true
   },
   "rules": {
+    "import/no-resolver":0,
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "import/no-named-as-default": 0,
     "trailing-comma": 0,
@@ -18,5 +19,6 @@
     "ecmaFeatures": {
       "jsx": true
     }
-  }
+  },
+
 }
