@@ -7,6 +7,7 @@ import GlobalStyle from 'theme/GlobalStyle';
 import Input from 'components/atoms/Input/Input';
 import Buttonicon from 'components/atoms/Button/Buttonicon/Buttonicon';
 import bulbIcon from 'assets/icons/bulb.svg';
+import Card from 'components/moleculs/Card/Card';
 import { theme } from 'theme/mainTheme';
 
 const Root = () => (
@@ -14,6 +15,7 @@ const Root = () => (
     <GlobalStyle />
     <ThemeProvider theme={theme}>
       <>
+        <Card />
         <Heading big>Big</Heading>
         <Heading>Normall</Heading>
         <Buttonicon icon={bulbIcon} />
