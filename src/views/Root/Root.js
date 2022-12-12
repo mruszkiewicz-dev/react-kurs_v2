@@ -4,6 +4,7 @@ import Button from 'components/atoms/Button/Button';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import GlobalStyle from 'theme/GlobalStyle';
+import Input from 'components/atoms/Input/Input';
 import { theme } from 'theme/mainTheme';
 
 const Root = () => (
@@ -17,8 +18,8 @@ const Root = () => (
           Miles Dewey Davis III (May 26, 1926 – September 28, 1991) was an American jazz trumpeter,
           bandleader, and composer.
         </Paragraph>
+        <Input search placeholder="login" />
         <Paragraph bold>teksss</Paragraph>
-
         <Button>close / Save</Button>
         <Button secondary>remove</Button>
       </>
