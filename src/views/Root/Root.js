@@ -5,7 +5,7 @@ import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import GlobalStyle from 'theme/GlobalStyle';
 import Input from 'components/atoms/Input/Input';
-import Buttonicon from 'components/atoms/Button/Buttonicon/Buttonicon';
+import Buttonicon from 'components/atoms/Buttonicon/Buttonicon';
 import bulbIcon from 'assets/icons/bulb.svg';
 import Card from 'components/moleculs/Card/Card';
 import { theme } from 'theme/mainTheme';
