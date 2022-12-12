@@ -5,9 +5,11 @@ import MainTemplate from 'templates/MainTemplate';
 import Note from 'views/Note';
 import Article from 'views/Article';
 import Twitter from 'views/Twitter';
+import Sidebar from 'components/organism/Sidebar/Sidebar';
 
 const Root = () => (
   <MainTemplate>
+    <Sidebar />
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Note />} />
