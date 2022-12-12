@@ -15,7 +15,7 @@ const Root = () => (
     <GlobalStyle />
     <ThemeProvider theme={theme}>
       <>
-        <Card />
+        <Card cardType="article" />
         <Heading big>Big</Heading>
         <Heading>Normall</Heading>
         <Buttonicon icon={bulbIcon} />
