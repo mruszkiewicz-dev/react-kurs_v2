@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Buttonicon from 'components/atoms/Buttonicon/Buttonicon';
 import Heading from 'components/atoms/Heading/Heading';
@@ -31,17 +31,20 @@ const StyledWrapperButton = styled.div`
 `;
 const StyledButtonicon = styled(Buttonicon)`
   margin: 20px;
+  &.active {
+    background-color: white;
+  }
 `;
 
 const Sidebar = () => (
   <StyledWrapper>
     <Heading>Logo</Heading>
     <StyledWrapperButton>
-      <StyledButtonicon component={Link} to="/" icon={PenIcon} />
-      <StyledButtonicon component={Link} to="/articles" icon={TwitterIcon} />
-      <StyledButtonicon component={Link} to="/twitters" icon={BulbIcon} />
+      <StyledButtonicon as={NavLink} to="/" icon={PenIcon} />
+      <StyledButtonicon as={NavLink} to="/articles" icon={TwitterIcon} />
+      <StyledButtonicon as={NavLink} to="/twitters" icon={BulbIcon} />
     </StyledWrapperButton>
-    <Buttonicon component={Link} to="/" icon={LogoutIcon} />
+    <Buttonicon as={NavLink} to="/" icon={LogoutIcon} />
   </StyledWrapper>
 );
 

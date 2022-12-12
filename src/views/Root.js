@@ -9,7 +9,6 @@ import Sidebar from 'components/organism/Sidebar/Sidebar';
 
 const Root = () => (
   <MainTemplate>
-    <Sidebar />
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Note />} />
@@ -17,6 +16,7 @@ const Root = () => (
         <Route path="/twitters" element={<Twitter />} />
       </Routes>
       <Button secondary>remove</Button>
+      <Sidebar />
     </BrowserRouter>
   </MainTemplate>
 );
