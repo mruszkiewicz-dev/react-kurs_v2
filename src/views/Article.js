@@ -1,6 +1,6 @@
 import React from 'react';
-import UserPageTemplate from 'templates/UserPageTemplate';
 import Card from 'components/moleculs/Card/Card';
+import GridTemplate from 'templates/GridTemplate';
 
 const data = [
   {
@@ -41,7 +41,7 @@ const data = [
 ];
 
 const Article = () => (
-  <UserPageTemplate pageType="article">
+  <GridTemplate pageType="article">
     {data.map((item) => (
       <Card
         cardType="article"
@@ -52,8 +52,8 @@ const Article = () => (
         content={item.content}
         key={item.title}
       />
-    ))}{' '}
-  </UserPageTemplate>
+    ))}
+  </GridTemplate>
 );
 
 export default Article;
