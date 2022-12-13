@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Buttonicon from 'components/atoms/Buttonicon/Buttonicon';
@@ -9,7 +10,7 @@ import BulbIcon from 'assets/icons/bulb.svg';
 import LogoutIcon from 'assets/icons/logout.svg';
 
 const StyledWrapper = styled.div`
-  background-color: ${({ theme }) => theme.note};
+  background-color: ${({ theme, activeColor }) => (activeColor ? theme[activeColor] : theme.note)};
   display: grid;
   grid-template-rows: 0.1fr 1fr 0.1fr;
   justify-items: center;
@@ -36,8 +37,8 @@ const StyledButtonicon = styled(Buttonicon)`
   }
 `;
 
-const Sidebar = () => (
-  <StyledWrapper>
+const Sidebar = ({ pageType }) => (
+  <StyledWrapper activeColor={pageType}>
     <Heading>Logo</Heading>
     <StyledWrapperButton>
       <StyledButtonicon as={NavLink} to="/" icon={PenIcon} />
@@ -47,5 +48,13 @@ const Sidebar = () => (
     <Buttonicon as={NavLink} to="/" icon={LogoutIcon} />
   </StyledWrapper>
 );
+
+Sidebar.propTypes = {
+  pageType: PropTypes.oneOf(['note', 'twitter', 'article']),
+};
+
+Sidebar.defaultProps = {
+  pageType: 'note',
+};
 
 export default Sidebar;
