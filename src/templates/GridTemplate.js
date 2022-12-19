@@ -27,7 +27,7 @@ const GridTemplate = ({ children, pageType }) => (
     <StyledHeaderWrapper>
       <Input search />
       <StyledHeading big as="h1">
-        {pageType}s
+        {pageType}ss
       </StyledHeading>
       <Paragraph>6 {pageType}s</Paragraph>
     </StyledHeaderWrapper>
