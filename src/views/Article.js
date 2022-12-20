@@ -46,7 +46,7 @@ const data = [
 ];
 
 const Article = () => (
-  <GridTemplate pageType="article">
+  <GridTemplate data={data} pageType="article">
     {data.map((item) => (
       <Card
         id={item.id}

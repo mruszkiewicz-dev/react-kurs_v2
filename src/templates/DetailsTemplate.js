@@ -1,9 +1,10 @@
 import React from 'react';
 import UserPageTemplate from 'templates/UserPageTemplate';
+import Details from 'components/organism/Details/Details';
 
 class DetailsTemplate extends React.Component {
   state = {
-    pageType: 'notes',
+    pageType: 'note',
   };
 
   componentDidMount() {
@@ -27,9 +28,12 @@ class DetailsTemplate extends React.Component {
 
   render() {
     const { pageType } = this.state;
+
     return (
       <UserPageTemplate pageType={pageType}>
         <p>{`is twi: ${pageType}`}</p>
+        {console.log(this.props)}
+        <Details />
       </UserPageTemplate>
     );
   }

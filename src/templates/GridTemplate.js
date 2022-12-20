@@ -22,8 +22,8 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
-const GridTemplate = ({ children, pageType }) => (
-  <UserPageTemplate pageType={pageType}>
+const GridTemplate = ({ data, children, pageType }) => (
+  <UserPageTemplate data={data} pageType={pageType}>
     <StyledHeaderWrapper>
       <Input search />
       <StyledHeading big as="h1">
