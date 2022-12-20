@@ -1,16 +1,38 @@
 import React from 'react';
 import UserPageTemplate from 'templates/UserPageTemplate';
-import { useLocation } from 'react-router-dom';
 
-const DetailsTemplate = () => {
-  const location = useLocation();
-  return (
-    <UserPageTemplate>
-      <p>{`is twi: ${location.pathname.includes('twitter')}`}</p>
-      <p>{`is art: ${location.pathname.includes('article')}`}</p>
-      <p>{`is noe: ${location.pathname.includes('note')}`}</p>
-    </UserPageTemplate>
-  );
-};
+class DetailsTemplate extends React.Component {
+  state = {
+    pageType: 'notes',
+  };
+
+  componentDidMount() {
+    const { match } = this.props;
+
+    switch (true) {
+      case match.pathname.includes('twitters'):
+        this.setState({ pageType: 'twitter' });
+        break;
+      case match.pathname.includes('notes'):
+        this.setState({ pageType: 'note' });
+        break;
+
+      case match.pathname.includes('articles'):
+        this.setState({ pageType: 'article' });
+        break;
+      default:
+        console.log('this.state.pageType');
+    }
+  }
+
+  render() {
+    const { pageType } = this.state;
+    return (
+      <UserPageTemplate pageType={pageType}>
+        <p>{`is twi: ${pageType}`}</p>
+      </UserPageTemplate>
+    );
+  }
+}
 
 export default DetailsTemplate;
