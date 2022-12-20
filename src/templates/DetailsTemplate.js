@@ -33,7 +33,7 @@ class DetailsTemplate extends React.Component {
       <UserPageTemplate pageType={pageType}>
         <p>{`is twi: ${pageType}`}</p>
         {console.log(this.props)}
-        <Details />
+        <Details pageType={pageType} />
       </UserPageTemplate>
     );
   }
