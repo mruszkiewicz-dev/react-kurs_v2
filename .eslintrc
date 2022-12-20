@@ -7,11 +7,12 @@
     "document": true
   },
   "rules": {
+    "react/state-in-constructor": 0,
     "react/prop-types": 0,
     "import/prefer-default-export": 0,
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "import/no-unresolved": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js",".jsx"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "import/no-named-as-default": 0,
     "trailing-comma": 0,
     "react/react-in-jsx-scope": "off",
@@ -22,20 +23,25 @@
       }
     ]
   },
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+    },
     "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     }
   },
- "settings": {
-  "import/resolver": {
-    "node": {
-      "paths": ["src"],
-      "extensions": [".ts", ".tsx"],
-      "moduleDirectory": ["src", "node_modules"]
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".ts", ".tsx"],
+        "moduleDirectory": ["src", "node_modules"]
+      }
     }
   }
-}
 }

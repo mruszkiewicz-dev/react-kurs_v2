@@ -6,8 +6,9 @@ const DetailsTemplate = () => {
   const location = useLocation();
   return (
     <UserPageTemplate>
-      <p>ss</p>
-      {console.log(location)}
+      <p>{`is twi: ${location.pathname.includes('twitter')}`}</p>
+      <p>{`is art: ${location.pathname.includes('article')}`}</p>
+      <p>{`is noe: ${location.pathname.includes('note')}`}</p>
     </UserPageTemplate>
   );
 };

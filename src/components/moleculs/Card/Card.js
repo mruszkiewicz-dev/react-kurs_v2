@@ -66,20 +66,31 @@ const StyledLinkButton = styled.a`
   transform: translateY(-50%);
 `;
 
-const Card = ({ cardType, title, date, avatar, link, content }) => (
-  <StyledWrapper>
-    <StyledInnerWrapper activeColor={cardType}>
-      <StyledHeading>{title}</StyledHeading>
-      <DateInfo>{date}</DateInfo>
-      {cardType === 'twitter' && <StyledAvatar src={avatar} />}
-      {cardType === 'article' && <StyledLinkButton href={link} />}
-    </StyledInnerWrapper>
-    <StyledInnerWrapper flex>
-      <Paragraph>{content}</Paragraph>
-      <Button secondary>Remove</Button>
-    </StyledInnerWrapper>
-  </StyledWrapper>
-);
+class Card extends React.Component {
+  state = {
+    as: false,
+  };
+
+  render() {
+    const { cardType, title, date, avatar, link, content } = this.props;
+    const { as } = this.state;
+    return (
+      <StyledWrapper>
+        <StyledInnerWrapper activeColor={cardType}>
+          <StyledHeading>{title}</StyledHeading>
+          <DateInfo>{date}</DateInfo>
+          {as === false ? console.log('aa') : console.log('aa')}
+          {cardType === 'twitter' && <StyledAvatar src={avatar} />}
+          {cardType === 'article' && <StyledLinkButton href={link} />}
+        </StyledInnerWrapper>
+        <StyledInnerWrapper flex>
+          <Paragraph>{content}</Paragraph>
+          <Button secondary>Remove</Button>
+        </StyledInnerWrapper>
+      </StyledWrapper>
+    );
+  }
+}
 
 Card.propTypes = {
   cardType: PropTypes.oneOf(['note', 'twitter', 'article']),
@@ -95,4 +106,5 @@ Card.defaultProps = {
   avatar: null,
   link: null,
 };
+
 export default Card;
