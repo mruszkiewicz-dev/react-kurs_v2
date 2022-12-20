@@ -68,18 +68,18 @@ const StyledLinkButton = styled.a`
 
 class Card extends React.Component {
   state = {
-    as: false,
+    ass: false,
   };
 
   render() {
     const { cardType, title, date, avatar, link, content } = this.props;
-    const { as } = this.state;
+    const { ass } = this.state;
     return (
       <StyledWrapper>
         <StyledInnerWrapper activeColor={cardType}>
           <StyledHeading>{title}</StyledHeading>
           <DateInfo>{date}</DateInfo>
-          {as === false ? console.log('aa') : console.log('aa')}
+          {ass === false ? console.log('aa') : console.log('aa')}
           {cardType === 'twitter' && <StyledAvatar src={avatar} />}
           {cardType === 'article' && <StyledLinkButton href={link} />}
         </StyledInnerWrapper>
