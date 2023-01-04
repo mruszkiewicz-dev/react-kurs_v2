@@ -1,58 +1,11 @@
 import React from 'react';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/moleculs/Card/Card';
+import { connect } from 'react-redux';
 
-const data = [
-  {
-    id: 1,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-    avatar: 'https://pbs.twimg.com/profile_images/1571874118110257155/uUF8WNF2_400x400.jpg',
-  },
-  {
-    id: 2,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-    avatar: 'https://pbs.twimg.com/profile_images/1571874118110257155/uUF8WNF2_400x400.jpg',
-  },
-  {
-    id: 3,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-    avatar: 'https://pbs.twimg.com/profile_images/1571874118110257155/uUF8WNF2_400x400.jpg',
-  },
-  {
-    id: 4,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-    avatar: 'https://pbs.twimg.com/profile_images/1571874118110257155/uUF8WNF2_400x400.jpg',
-  },
-  {
-    id: 5,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-    avatar: 'https://pbs.twimg.com/profile_images/1571874118110257155/uUF8WNF2_400x400.jpg',
-  },
-];
-
-const Twitter = () => (
+const Twitter = ({ twitters }) => (
   <GridTemplate pageType="twitter">
-    {data.map((item) => (
+    {twitters.map((item) => (
       <Card
         id={item.id}
         cardType="twitter"
@@ -67,4 +20,6 @@ const Twitter = () => (
   </GridTemplate>
 );
 
-export default Twitter;
+const mapStateToProps = ({ twitters }) => ({ twitters });
+
+export default connect(mapStateToProps)(Twitter);
