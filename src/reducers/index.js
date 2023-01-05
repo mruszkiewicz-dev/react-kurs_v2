@@ -7,6 +7,16 @@ const initialState = {
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       created: '1 day',
       twitterName: 'hello_roman',
+      date: 'aaa',
+    },
+    {
+      id: 2,
+      title: 'Hello Roman',
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+      created: '1 day',
+      twitterName: 'hello_roman',
+      date: 'aaa',
     },
   ],
   articles: [
@@ -30,8 +40,6 @@ const initialState = {
   ],
 };
 
-const rootReducer = (action, state = initialState) => {
-  console.log(state, action);
-};
+const reducer = (state = initialState, action) => state;
 
-export default rootReducer;
+export default reducer;

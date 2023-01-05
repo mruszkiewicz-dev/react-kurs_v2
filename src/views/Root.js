@@ -7,7 +7,7 @@ import Article from 'views/Article';
 import Twitter from 'views/Twitter';
 import DetailsPage from 'views/DetailsPage';
 import { routes } from 'Routes/index';
-import store from 'store';
+import store from 'store/index';
 
 const Root = () => (
   <Provider store={store}>

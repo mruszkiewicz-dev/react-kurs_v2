@@ -1,10 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import notesApp from 'reducers/index.js';
+import reducer from 'reducers/index.js';
 
 const store = configureStore({
-  reducer: {
-    notesApp,
-  },
+  reducer,
 });
 
 export default store;

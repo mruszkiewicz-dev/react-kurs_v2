@@ -20,6 +20,9 @@ const Twitter = ({ twitters }) => (
   </GridTemplate>
 );
 
-const mapStateToProps = ({ twitters }) => ({ twitters });
+const mapStateToProps = (state) => {
+  const { twitters } = state;
+  return { twitters };
+};
 
 export default connect(mapStateToProps)(Twitter);
