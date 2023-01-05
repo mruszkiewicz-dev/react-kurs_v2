@@ -1,53 +1,11 @@
 import React from 'react';
 import Card from 'components/moleculs/Card/Card';
 import GridTemplate from 'templates/GridTemplate';
+import { connect } from 'react-redux';
 
-const data = [
-  {
-    id: 1,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-  },
-  {
-    id: 2,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-  },
-  {
-    id: 3,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-  },
-  {
-    id: 4,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-  },
-  {
-    id: 5,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-  },
-];
-
-const Article = () => (
-  <GridTemplate data={data} pageType="article">
-    {data.map((item) => (
+const Article = ({ articles }) => (
+  <GridTemplate data={articles} pageType="article">
+    {articles.map((item) => (
       <Card
         id={item.id}
         cardType="article"
@@ -62,4 +20,8 @@ const Article = () => (
   </GridTemplate>
 );
 
-export default Article;
+const mapStateToProps = (state) => ({
+  articles: state.articles,
+});
+
+export default connect(mapStateToProps)(Article);

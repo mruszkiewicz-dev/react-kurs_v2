@@ -1,53 +1,11 @@
 import React from 'react';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/moleculs/Card/Card';
+import { connect } from 'react-redux';
 
-const data = [
-  {
-    id: 1,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-  },
-  {
-    id: 2,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-  },
-  {
-    id: 3,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-  },
-  {
-    id: 4,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-  },
-  {
-    id: 5,
-    title: 'aaaa',
-    date: '3 days',
-    avarat: null,
-    link: null,
-    content: 'testdjbfgkdjbfkjdbfkdb dfkgb dkfgb k skdfjhgnb ',
-  },
-];
-
-const Note = () => (
+const Note = ({ notes }) => (
   <GridTemplate pageType="note">
-    {data.map((item) => (
+    {notes.map((item) => (
       <Card
         id={item.id}
         cardType="note"
@@ -62,4 +20,8 @@ const Note = () => (
   </GridTemplate>
 );
 
-export default Note;
+const mapStateToProps = (state) => ({
+  notes: state.notes,
+});
+
+export default connect(mapStateToProps)(Note);
