@@ -10,7 +10,7 @@ import BulbIcon from 'assets/icons/bulb.svg';
 import LogoutIcon from 'assets/icons/logout.svg';
 
 const StyledWrapper = styled.div`
-  background-color: ${({ theme, activeColor }) => (activeColor ? theme[activeColor] : theme.note)};
+  background-color: ${({ theme, activeColor }) => (activeColor ? theme[activeColor] : theme.notes)};
   display: grid;
   grid-template-rows: 0.1fr 1fr 0.1fr;
   justify-items: center;
@@ -50,11 +50,11 @@ const Sidebar = ({ pageType }) => (
 );
 
 Sidebar.propTypes = {
-  pageType: PropTypes.oneOf(['note', 'twitter', 'article']),
+  pageType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
 };
 
 Sidebar.defaultProps = {
-  pageType: 'note',
+  pageType: 'notes',
 };
 
 export default Sidebar;

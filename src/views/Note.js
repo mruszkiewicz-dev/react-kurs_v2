@@ -4,11 +4,11 @@ import Card from 'components/moleculs/Card/Card';
 import { connect } from 'react-redux';
 
 const Note = ({ notes }) => (
-  <GridTemplate pageType="note">
+  <GridTemplate pageType="notes">
     {notes.map((item) => (
       <Card
         id={item.id}
-        cardType="note"
+        cardType="notes"
         title={item.title}
         date={item.date}
         avatar={item.avarat}
