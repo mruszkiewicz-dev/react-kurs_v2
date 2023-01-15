@@ -4,6 +4,7 @@ import Heading from 'components/atoms/Heading/Heading';
 import Input from 'components/atoms/Input/Input';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import UserPageTemplate from 'templates/UserPageTemplate';
+import widthContext from 'hoc/withContext';
 
 const StyledGridWrapper = styled.div`
   display: grid;
@@ -22,8 +23,9 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
-const GridTemplate = ({ data, children, pageType }) => (
+const GridTemplate = ({ data, children, pageType,context }) => (
   <UserPageTemplate data={data} pageType={pageType}>
+    
     <StyledHeaderWrapper>
       <Input search />
       <StyledHeading big as="h1">
@@ -34,4 +36,4 @@ const GridTemplate = ({ data, children, pageType }) => (
     <StyledGridWrapper>{children}</StyledGridWrapper>
   </UserPageTemplate>
 );
-export default GridTemplate;
+export default widthContext(GridTemplate)

@@ -4,15 +4,15 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from 'theme/GlobalStyle';
 import { theme } from 'theme/mainTheme';
 import { useLocation } from 'react-router-dom';
+import PageContex from 'context';
 
 const MainTemplate = ({ children }) => {
-  const params = useLocation().pathname.slice(1);
+  const pageType = useLocation().pathname.slice(1);
   return (
-    <>
-      {console.log(params)}
+    <PageContex.Provider value={pageType}>
       <GlobalStyle />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </>
+    </PageContex.Provider>
   );
 };
 
