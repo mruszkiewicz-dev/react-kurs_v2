@@ -77,7 +77,7 @@ class Card extends React.Component {
   handleCardClick = () => this.setState({ as: true });
 
   render() {
-    const { id, cardType, title, date, avatar, link, content, removeItem } = this.props;
+    const { id, cardType, title, avatar, link, content, removeItem } = this.props;
     const { as } = this.state;
     if (as) {
       return <Navigate to={`${id}`} />;
@@ -86,7 +86,7 @@ class Card extends React.Component {
       <StyledWrapper>
         <StyledInnerWrapper onClick={this.handleCardClick} activeColor={cardType}>
           <StyledHeading>{title}</StyledHeading>
-          <DateInfo>{date}</DateInfo>
+          <DateInfo>23</DateInfo>
           {cardType === 'twitters' && <StyledAvatar src={avatar} />}
           {cardType === 'articles' && <StyledLinkButton href={link} />}
         </StyledInnerWrapper>
@@ -104,10 +104,10 @@ class Card extends React.Component {
 Card.propTypes = {
   cardType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   title: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
   avatar: PropTypes.string,
   link: PropTypes.string,
   content: PropTypes.string.isRequired,
+  removeItem: PropTypes.func.isRequired,
 };
 
 Card.defaultProps = {
