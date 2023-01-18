@@ -1,9 +1,9 @@
 import React from 'react';
 import Sidebar from 'components/organism/Sidebar/Sidebar';
 
-const UserPageTemplate = ({ children, pageType }) => (
+const UserPageTemplate = ({ children }) => (
   <>
-    <Sidebar pageType={pageType} />
+    <Sidebar />
     {children}
   </>
 );

@@ -23,17 +23,16 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
-const GridTemplate = ({ data, children, pageType,context }) => (
-  <UserPageTemplate data={data} pageType={pageType}>
-    
+const GridTemplate = ({ data, children, context }) => (
+  <UserPageTemplate data={data}>
     <StyledHeaderWrapper>
       <Input search />
       <StyledHeading big as="h1">
-        {pageType}ss
+        {context}ss
       </StyledHeading>
-      <Paragraph>6 {pageType}s</Paragraph>
+      <Paragraph>6 {context}s</Paragraph>
     </StyledHeaderWrapper>
     <StyledGridWrapper>{children}</StyledGridWrapper>
   </UserPageTemplate>
 );
-export default widthContext(GridTemplate)
+export default widthContext(GridTemplate);

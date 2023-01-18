@@ -3,6 +3,7 @@ import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
+import widthContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   margin-left: 100px;
@@ -61,4 +62,4 @@ const Details = ({ pageType }) => (
     </StyledWrapperButton>
   </StyledWrapper>
 );
-export default Details;
+export default widthContext(Details);

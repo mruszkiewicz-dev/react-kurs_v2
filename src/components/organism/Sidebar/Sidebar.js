@@ -8,6 +8,7 @@ import PenIcon from 'assets/icons/pen.svg';
 import TwitterIcon from 'assets/icons/twitter.svg';
 import BulbIcon from 'assets/icons/bulb.svg';
 import LogoutIcon from 'assets/icons/logout.svg';
+import widthContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   background-color: ${({ theme, activeColor }) => (activeColor ? theme[activeColor] : theme.notes)};
@@ -37,10 +38,11 @@ const StyledButtonicon = styled(Buttonicon)`
   }
 `;
 
-const Sidebar = ({ pageType }) => (
-  <StyledWrapper activeColor={pageType}>
+const Sidebar = ({ context }) => (
+  <StyledWrapper activeColor={context}>
     <Heading>Logo</Heading>
     <StyledWrapperButton>
+      {context}
       <StyledButtonicon as={NavLink} to="/notes" icon={PenIcon} />
       <StyledButtonicon as={NavLink} to="/twitters" icon={TwitterIcon} />
       <StyledButtonicon as={NavLink} to="/articles" icon={BulbIcon} />
@@ -50,11 +52,11 @@ const Sidebar = ({ pageType }) => (
 );
 
 Sidebar.propTypes = {
-  pageType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  context: PropTypes.oneOf(['notes', 'twitters', 'articles']),
 };
 
 Sidebar.defaultProps = {
-  pageType: 'notes',
+  context: 'notes',
 };
 
-export default Sidebar;
+export default widthContext(Sidebar);

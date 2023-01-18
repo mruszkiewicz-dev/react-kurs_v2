@@ -1,25 +1,26 @@
 import React from 'react';
 import UserPageTemplate from 'templates/UserPageTemplate';
 import Details from 'components/organism/Details/Details';
+import widthContext from 'hoc/withContext';
 
 class DetailsTemplate extends React.Component {
   state = {
-    pageType: 'note',
+    pageType: 'notes',
   };
 
   componentDidMount() {
-    const { match } = this.props;
+    const { context } = this.props;
 
     switch (true) {
-      case match.pathname.includes('twitters'):
-        this.setState({ pageType: 'twitter' });
+      case context.includes('twitters'):
+        this.setState({ pageType: 'twitters' });
         break;
-      case match.pathname.includes('notes'):
-        this.setState({ pageType: 'note' });
+      case context.includes('notes'):
+        this.setState({ pageType: 'notes' });
         break;
 
-      case match.pathname.includes('articles'):
-        this.setState({ pageType: 'article' });
+      case context.includes('articles'):
+        this.setState({ pageType: 'articles' });
         break;
       default:
         console.log('this.state.pageType');
@@ -30,13 +31,12 @@ class DetailsTemplate extends React.Component {
     const { pageType } = this.state;
 
     return (
-      <UserPageTemplate pageType={pageType}>
-        <p>{`is twi: ${pageType}`}</p>
-        {console.log(this.props)}
+      <UserPageTemplate>
+        <p>{`is ${pageType}`}</p>
         {/* <Details pageType={pageType} /> */}
       </UserPageTemplate>
     );
   }
 }
 
-export default DetailsTemplate;
+export default widthContext(DetailsTemplate);
