@@ -12,7 +12,6 @@ const MainTemplate = ({ children }) => {
     .replace(/\/(.*)/, '');
   return (
     <PageContex.Provider value={pageType}>
-      {console.log(useLocation().pathname.slice(1).indexOf('/'))}
       <GlobalStyle />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </PageContex.Provider>
