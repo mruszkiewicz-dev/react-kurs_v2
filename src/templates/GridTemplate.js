@@ -32,7 +32,7 @@ const GridTemplate = ({ data, children, context }) => (
       </StyledHeading>
       <Paragraph>6 {context}s</Paragraph>
     </StyledHeaderWrapper>
-    <StyledGridWrapper>{children}</StyledGridWrapper>
+    <StyledGridWrapper>{children} </StyledGridWrapper>
   </UserPageTemplate>
 );
 export default widthContext(GridTemplate);
