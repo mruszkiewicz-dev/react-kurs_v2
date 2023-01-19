@@ -37,18 +37,38 @@ const StyledButtonIcon = styled(Buttonicon)`
   z-index: 100000;
 `;
 
-const GridTemplate = ({ data, children, context }) => (
-  <UserPageTemplate data={data}>
-    <StyledHeaderWrapper>
-      <Input search />
-      <StyledHeading big as="h1">
-        {context}ss
-      </StyledHeading>
-      <Paragraph>6 {context}s</Paragraph>
-    </StyledHeaderWrapper>
-    <StyledGridWrapper>{children} </StyledGridWrapper>
-    <StyledButtonIcon activecolor={context} icon={plusIcon} />
-    <NewItemBar />
-  </UserPageTemplate>
-);
+class GridTemplate extends React.Component {
+  state = {
+    isNewItemBarVisible: false,
+  };
+
+  handleNewItemBarToggle = () => {
+    this.setState((prevState) => ({
+      isNewItemBarVisible: !prevState.isNewItemBarVisible,
+    }));
+  };
+
+  render() {
+    const { data, children, context } = this.props;
+    const { isNewItemBarVisible } = this.state;
+    return (
+      <UserPageTemplate data={data}>
+        <StyledHeaderWrapper>
+          <Input search />
+          <StyledHeading big as="h1">
+            {context}ss
+          </StyledHeading>
+          <Paragraph>6 {context}s</Paragraph>
+        </StyledHeaderWrapper>
+        <StyledGridWrapper>{children} </StyledGridWrapper>
+        <StyledButtonIcon
+          activecolor={context}
+          icon={plusIcon}
+          onClick={this.handleNewItemBarToggle}
+        />
+        <NewItemBar isVisible={isNewItemBarVisible} />
+      </UserPageTemplate>
+    );
+  }
+}
 export default widthContext(GridTemplate);

@@ -17,6 +17,8 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   height: 100vh;
   width: 680px;
+  transform: translate(${({ isVisible }) => (isVisible ? '0' : '100%')});
+  transition: transform 0.5s ease-in-out;
 `;
 
 const StyledTextArea = styled(Input)`
@@ -24,14 +26,18 @@ const StyledTextArea = styled(Input)`
   border-radius: 20px;
   height: 30vh;
 `;
+const StyledInput = styled(Input)`
+  margin-top: 30px;
+`;
 
-const NewItemBar = ({ context }) => {
+const NewItemBar = ({ context, isVisible }) => {
   const pageInfo = context.slice(0, -1);
   return (
-    <StyledWrapper activecolor={context}>
+    <StyledWrapper isVisible={isVisible} activecolor={context}>
       <Heading>Add a new {pageInfo}</Heading>
       <Paragraph>A {pageInfo}</Paragraph>
-      <Input placeholder="title" />
+      <StyledInput placeholder="title" />
+      {context === 'articles' && <StyledInput placeholder="link" />}
       <StyledTextArea as="textarea" placeholder="descrition" />
       <Button activeColor={context}>Add {pageInfo}</Button>
     </StyledWrapper>
