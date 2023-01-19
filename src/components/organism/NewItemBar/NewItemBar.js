@@ -5,6 +5,9 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Input from 'components/atoms/Input/Input';
 import Button from 'components/atoms/Button/Button';
 import widthContext from 'hoc/withContext';
+import { connect } from 'react-redux';
+import { addItem as addItemAction } from 'actions/index';
+import PageContext from 'context';
 
 const StyledWrapper = styled.div`
   border-left: 10px solid ${({ theme, activecolor }) => theme[activecolor]};
@@ -19,6 +22,7 @@ const StyledWrapper = styled.div`
   width: 680px;
   transform: translate(${({ isVisible }) => (isVisible ? '0' : '100%')});
   transition: transform 0.5s ease-in-out;
+  background: white;
 `;
 
 const StyledTextArea = styled(Input)`
@@ -30,7 +34,7 @@ const StyledInput = styled(Input)`
   margin-top: 30px;
 `;
 
-const NewItemBar = ({ context, isVisible }) => {
+const NewItemBar = ({ context, addItem, isVisible }) => {
   const pageInfo = context.slice(0, -1);
   return (
     <StyledWrapper isVisible={isVisible} activecolor={context}>
@@ -39,8 +43,22 @@ const NewItemBar = ({ context, isVisible }) => {
       <StyledInput placeholder="title" />
       {context === 'articles' && <StyledInput placeholder="link" />}
       <StyledTextArea as="textarea" placeholder="descrition" />
-      <Button activeColor={context}>Add {pageInfo}</Button>
+      <Button
+        onClick={() =>
+          addItem(context, {
+            title: 'aa',
+            content: 'bbb',
+          })
+        }
+        activeColor={context}
+      >
+        Add {pageInfo}
+      </Button>
     </StyledWrapper>
   );
 };
-export default widthContext(NewItemBar);
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (itemTypem, itemContent) => dispatch(addItemAction(itemTypem, itemContent)),
+});
+
+export default connect(null, mapDispatchToProps)(widthContext(NewItemBar));
