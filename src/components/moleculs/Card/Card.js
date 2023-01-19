@@ -8,6 +8,7 @@ import Button from 'components/atoms/Button/Button';
 import LinkIcon from 'assets/icons/link.svg';
 import { connect } from 'react-redux';
 import { removeItem as removeItemAction } from 'actions';
+import widthContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   min-height: 380px;
@@ -71,28 +72,28 @@ const StyledLinkButton = styled.a`
 
 class Card extends React.Component {
   state = {
-    as: false,
+    toDetails: false,
   };
 
-  handleCardClick = () => this.setState({ as: true });
+  handleCardClick = () => this.setState({ toDetails: true });
 
   render() {
-    const { id, cardType, title, avatar, link, content, removeItem } = this.props;
-    const { as } = this.state;
-    if (as) {
-      return <Navigate to={`${id}`} />;
+    const { id, context, title, avatar, link, content, removeItem } = this.props;
+    const { toDetails } = this.state;
+    if (toDetails) {
+      return <Navigate data={this.props} to={`${id}`} />;
     }
     return (
       <StyledWrapper>
-        <StyledInnerWrapper onClick={this.handleCardClick} activeColor={cardType}>
+        <StyledInnerWrapper onClick={this.handleCardClick} activeColor={context}>
           <StyledHeading>{title}</StyledHeading>
           <DateInfo>23</DateInfo>
-          {cardType === 'twitters' && <StyledAvatar src={avatar} />}
-          {cardType === 'articles' && <StyledLinkButton href={link} />}
+          {context === 'twitters' && <StyledAvatar src={avatar} />}
+          {context === 'articles' && <StyledLinkButton href={link} />}
         </StyledInnerWrapper>
         <StyledInnerWrapper flex>
           <Paragraph>{content}</Paragraph>
-          <Button onClick={() => removeItem(cardType, id)} secondary>
+          <Button onClick={() => removeItem(context, id)} secondary>
             Remove
           </Button>
         </StyledInnerWrapper>
@@ -102,7 +103,7 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
-  cardType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  context: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   title: PropTypes.string.isRequired,
   avatar: PropTypes.string,
   link: PropTypes.string,
@@ -111,7 +112,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  cardType: 'notes',
+  context: 'notes',
   avatar: null,
   link: null,
 };
@@ -120,4 +121,4 @@ const mapDispatchToProps = (dispatch) => ({
   removeItem: (itemType, id) => dispatch(removeItemAction(itemType, id)),
 });
 
-export default connect(null, mapDispatchToProps)(Card);
+export default connect(null, mapDispatchToProps)(widthContext(Card));

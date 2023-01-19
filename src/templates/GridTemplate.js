@@ -3,10 +3,14 @@ import styled from 'styled-components';
 import Heading from 'components/atoms/Heading/Heading';
 import Input from 'components/atoms/Input/Input';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import NewItemBar from 'components/organism/NewItemBar/NewItemBar';
 import UserPageTemplate from 'templates/UserPageTemplate';
+import Buttonicon from 'components/atoms/Buttonicon/Buttonicon';
+import plusIcon from 'assets/icons/plus.svg';
 import widthContext from 'hoc/withContext';
 
 const StyledGridWrapper = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 85px;
@@ -23,6 +27,16 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
+const StyledButtonIcon = styled(Buttonicon)`
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-size: 35%;
+  background-color: ${({ activecolor, theme }) => theme[activecolor]};
+  border-radius: 50px;
+  z-index: 100000;
+`;
+
 const GridTemplate = ({ data, children, context }) => (
   <UserPageTemplate data={data}>
     <StyledHeaderWrapper>
@@ -33,6 +47,8 @@ const GridTemplate = ({ data, children, context }) => (
       <Paragraph>6 {context}s</Paragraph>
     </StyledHeaderWrapper>
     <StyledGridWrapper>{children} </StyledGridWrapper>
+    <StyledButtonIcon activecolor={context} icon={plusIcon} />
+    <NewItemBar />
   </UserPageTemplate>
 );
 export default widthContext(GridTemplate);

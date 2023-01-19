@@ -1,13 +1,11 @@
 import React from 'react';
 import UserPageTemplate from 'templates/UserPageTemplate';
 import Details from 'components/organism/Details/Details';
-import widthContext from 'hoc/withContext';
 
-const DetailsTemplate = ({ props, context }) => (
+const DetailsTemplate = ({ children }) => (
   <UserPageTemplate>
-    <Details context={context} />
-    {console.log(props)}
+    <Details data={children} />
   </UserPageTemplate>
 );
 
-export default widthContext(DetailsTemplate);
+export default DetailsTemplate;
