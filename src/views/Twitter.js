@@ -1,6 +1,6 @@
 import React from 'react';
-import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/moleculs/Card/Card';
+import GridTemplate from 'templates/GridTemplate';
 import { connect } from 'react-redux';
 
 const Twitter = ({ twitters }) => (
