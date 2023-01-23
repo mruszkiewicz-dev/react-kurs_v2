@@ -4,7 +4,7 @@ import GridTemplate from 'templates/GridTemplate';
 import { connect } from 'react-redux';
 
 const Article = ({ articles }) => (
-  <GridTemplate data={articles} pageType="articles">
+  <GridTemplate pageType="articles">
     {articles.map((item) => (
       <Card
         id={item.id}

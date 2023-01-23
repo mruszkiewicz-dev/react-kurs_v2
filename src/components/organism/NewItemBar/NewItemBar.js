@@ -1,28 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Heading from 'components/atoms/Heading/Heading';
-import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Input from 'components/atoms/Input/Input';
 import Button from 'components/atoms/Button/Button';
-import widthContext from 'hoc/withContext';
+import withContext from 'hoc/withContext';
+import Heading from 'components/atoms/Heading/Heading';
 import { connect } from 'react-redux';
-import { addItem as addItemAction } from 'actions/index';
-import PageContext from 'context';
+import { addItem as addItemAction } from 'actions';
+import { Formik, Form } from 'formik';
 
 const StyledWrapper = styled.div`
   border-left: 10px solid ${({ theme, activecolor }) => theme[activecolor]};
+  z-index: 9999;
   position: fixed;
-  z-index: 999;
   display: flex;
-  top: 0;
-  right: 0;
-  padding: 100px 50px;
+  padding: 100px 90px;
   flex-direction: column;
+  right: 0;
+  top: 0;
   height: 100vh;
   width: 680px;
+  background-color: white;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   transform: translate(${({ isVisible }) => (isVisible ? '0' : '100%')});
-  transition: transform 0.5s ease-in-out;
-  background: white;
+  transition: transform 0.25s ease-in-out;
+`;
+
+const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
 `;
 
 const StyledTextArea = styled(Input)`
@@ -30,35 +36,81 @@ const StyledTextArea = styled(Input)`
   border-radius: 20px;
   height: 30vh;
 `;
+
 const StyledInput = styled(Input)`
   margin-top: 30px;
 `;
 
-const NewItemBar = ({ context, addItem, isVisible }) => {
-  const pageInfo = context.slice(0, -1);
-  return (
-    <StyledWrapper isVisible={isVisible} activecolor={context}>
-      <Heading>Add a new {pageInfo}</Heading>
-      <Paragraph>A {pageInfo}</Paragraph>
-      <StyledInput placeholder="title" />
-      {context === 'articles' && <StyledInput placeholder="link" />}
-      <StyledTextArea as="textarea" placeholder="descrition" />
-      <Button
-        onClick={() =>
-          addItem(context, {
-            title: 'aa',
-            content: 'bbb',
-          })
-        }
-        activeColor={context}
-      >
-        Add {pageInfo}
-      </Button>
-    </StyledWrapper>
-  );
+const NewItemBar = ({ context, isVisible, addItem, handleClose }) => (
+  <StyledWrapper isVisible={isVisible} activecolor={context}>
+    <Heading big>Create new {context}</Heading>
+    <Formik
+      initialValues={{ title: '', content: '', articleUrl: '', twitterName: '', created: '' }}
+      onSubmit={(values) => {
+        addItem(context, values);
+        handleClose();
+      }}
+    >
+      {({ values, handleChange, handleBlur }) => (
+        <StyledForm>
+          <StyledInput
+            type="text"
+            name="title"
+            placeholder="title"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.title}
+          />
+          {context === 'twitters' && (
+            <StyledInput
+              placeholder="twitter name eg. hello_roman"
+              type="text"
+              name="twitterName"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.twitterName}
+            />
+          )}
+          {context === 'articles' && (
+            <StyledInput
+              placeholder="link"
+              type="text"
+              name="articleUrl"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.articleUrl}
+            />
+          )}
+          <StyledTextArea
+            name="content"
+            as="textarea"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.content}
+          />
+          <Button type="submit" activecolor={context}>
+            Add Note
+          </Button>
+        </StyledForm>
+      )}
+    </Formik>
+  </StyledWrapper>
+);
+
+NewItemBar.propTypes = {
+  context: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  isVisible: PropTypes.bool,
+  addItem: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
 };
+
+NewItemBar.defaultProps = {
+  context: 'notes',
+  isVisible: false,
+};
+
 const mapDispatchToProps = (dispatch) => ({
-  addItem: (itemTypem, itemContent) => dispatch(addItemAction(itemTypem, itemContent)),
+  addItem: (itemType, itemContent) => dispatch(addItemAction(itemType, itemContent)),
 });
 
-export default connect(null, mapDispatchToProps)(widthContext(NewItemBar));
+export default connect(null, mapDispatchToProps)(withContext(NewItemBar));

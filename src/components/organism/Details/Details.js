@@ -4,6 +4,8 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import widthContext from 'hoc/withContext';
+import { connect } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 const StyledWrapper = styled.div`
   margin-left: 100px;
@@ -36,30 +38,29 @@ const StyledWrapperButton = styled.div`
   align-content: flex-start;
 `;
 
-const data2 = {
-  id: 1,
-  title: 'My best note ever',
-  date: '3 days',
-  avarat: null,
-  link: 'http://www.tarlo.pl',
-  content:
-    'Born and raised in Illinois, Davis left his studies at the Juilliard School in New York City and made his professional debut as a member of saxophonist Charlie Parker s bebop quintet from 1944 to 1948. Shortly after, he recorded the Birth of the Cool sessions for Capitol Records, which were instrumental to the development of cool jazz. In the early 1950s, Miles Davis recorded some of the earliest hard bop music while on Prestige Records but did so haphazardly due to a heroin addiction. After a widely acclaimed comeback performance at the Newport Jazz Festival in 1955, he signed a long-term contract with Columbia Records and recorded the 1957 album Round About Midnight.[2] It was his first work with saxophonist John Coltrane and bassist Paul Chambers, key members of the sextet he led into the early 1960s. During this period, he alternated between orchestral jazz collaborations with arranger Gil Evans, such as the Spanish-influenced Sketches of Spain (1960), and band recordings, such as Milestones (1958) and Kind of Blue (1959).',
+const Details = ({ context, data }) => {
+  const id = useLocation().pathname.replace(/\/(.*)\//, '');
+  const details = data[context][id - 1];
+  return (
+    <StyledWrapper>
+      <Heading big>{details.title}</Heading>
+      <Paragraph bold>Created - {details.date}</Paragraph>
+      <Paragraph>{details.content}</Paragraph>
+      {context !== 'note' && (
+        <StyledLinkP bold href={details.link}>
+          Open this {context}
+        </StyledLinkP>
+      )}
+      <StyledWrapperButton>
+        <Button activeColor={context}>CLOSE / SAVE</Button>
+        <StyledLinkRemove href="a">remove note</StyledLinkRemove>
+      </StyledWrapperButton>
+    </StyledWrapper>
+  );
 };
 
-const Details = ({ context }) => (
-  <StyledWrapper>
-    <Heading big>{data2.title}</Heading>
-    <Paragraph bold>Created - {data2.date}</Paragraph>
-    <Paragraph>{data2.content}</Paragraph>
-    {context !== 'note' && (
-      <StyledLinkP bold href={data2.link}>
-        Open this {context}
-      </StyledLinkP>
-    )}
-    <StyledWrapperButton>
-      <Button activeColor={context}>CLOSE / SAVE</Button>
-      <StyledLinkRemove href="a">remove note</StyledLinkRemove>
-    </StyledWrapperButton>
-  </StyledWrapper>
-);
-export default widthContext(Details);
+const mapStateToProps = (state) => ({
+  data: state,
+});
+
+export default connect(mapStateToProps)(widthContext(Details));

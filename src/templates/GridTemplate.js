@@ -42,7 +42,7 @@ class GridTemplate extends React.Component {
     isNewItemBarVisible: false,
   };
 
-  handleNewItemBarToggle = () => {
+  toggleNewItemBar = () => {
     this.setState((prevState) => ({
       isNewItemBarVisible: !prevState.isNewItemBarVisible,
     }));
@@ -56,17 +56,13 @@ class GridTemplate extends React.Component {
         <StyledHeaderWrapper>
           <Input search />
           <StyledHeading big as="h1">
-            {context}ss
+            {context}
           </StyledHeading>
           <Paragraph>6 {context}s</Paragraph>
         </StyledHeaderWrapper>
-        <StyledGridWrapper>{children} </StyledGridWrapper>
-        <StyledButtonIcon
-          activecolor={context}
-          icon={plusIcon}
-          onClick={this.handleNewItemBarToggle}
-        />
-        <NewItemBar isVisible={isNewItemBarVisible} />
+        <StyledGridWrapper>{children}</StyledGridWrapper>
+        <StyledButtonIcon activecolor={context} icon={plusIcon} onClick={this.toggleNewItemBar} />
+        <NewItemBar handleClose={this.toggleNewItemBar} isVisible={isNewItemBarVisible} />
       </UserPageTemplate>
     );
   }

@@ -2,9 +2,9 @@ import React from 'react';
 import UserPageTemplate from 'templates/UserPageTemplate';
 import Details from 'components/organism/Details/Details';
 
-const DetailsTemplate = ({ children }) => (
+const DetailsTemplate = () => (
   <UserPageTemplate>
-    <Details data={children} />
+    <Details />
   </UserPageTemplate>
 );
 
