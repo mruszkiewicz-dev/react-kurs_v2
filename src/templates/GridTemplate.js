@@ -52,7 +52,7 @@ class GridTemplate extends React.Component {
     const { data, children, context } = this.props;
     const { isNewItemBarVisible } = this.state;
     return (
-      <UserPageTemplate data={data}>
+      <UserPageTemplate>
         <StyledHeaderWrapper>
           <Input search />
           <StyledHeading big as="h1">

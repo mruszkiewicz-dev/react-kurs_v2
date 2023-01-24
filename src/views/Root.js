@@ -6,7 +6,7 @@ import Note from 'views/Note';
 import Article from 'views/Article';
 import Twitter from 'views/Twitter';
 import DetailsPage from 'views/DetailsPage';
-import { routes } from 'Routes/index';
+import { routes } from 'routes/index';
 import store from 'store/index';
 import LoginPage from 'views/LoginPage';
 
