@@ -8,13 +8,16 @@ import Twitter from 'views/Twitter';
 import DetailsPage from 'views/DetailsPage';
 import { routes } from 'Routes/index';
 import store from 'store/index';
+import LoginPage from 'views/LoginPage';
 
 const Root = () => (
   <Provider store={store}>
     <BrowserRouter>
       <MainTemplate>
         <Routes>
-          <Route path={routes.notes} element={<Note />} />\
+          <Route path={routes.login} element={<LoginPage />} />
+          <Route path={routes.notes} element={<Note />} />
+
           <Route path={routes.note} element={<DetailsPage />} />
           <Route path={routes.articles} element={<Article />} />
           <Route path={routes.article} element={<DetailsPage />} />
