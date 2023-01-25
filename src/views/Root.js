@@ -15,15 +15,14 @@ const Root = () => (
     <BrowserRouter>
       <MainTemplate>
         <Routes>
+          <Route path={routes.home} element={<Navigate to="/login" replace />} />
           <Route path={routes.login} element={<LoginPage />} />
           <Route path={routes.notes} element={<Note />} />
-
           <Route path={routes.note} element={<DetailsPage />} />
           <Route path={routes.articles} element={<Article />} />
           <Route path={routes.article} element={<DetailsPage />} />
           <Route path={routes.twitters} element={<Twitter />} />
           <Route path={routes.twitter} element={<DetailsPage />} />
-          <Route path={routes.home} element={<Navigate to="/notes" replace />} />
         </Routes>
       </MainTemplate>
     </BrowserRouter>

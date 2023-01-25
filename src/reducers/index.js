@@ -42,6 +42,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'AUTH_OK':
+      return {
+        ...state,
+        userID: action.payload.data._id,
+      };
     case 'ADD_ITEM':
       return {
         ...state,
