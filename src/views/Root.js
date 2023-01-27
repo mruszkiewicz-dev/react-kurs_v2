@@ -9,6 +9,7 @@ import DetailsPage from 'views/DetailsPage';
 import { routes } from 'routes/index';
 import store from 'store/index';
 import LoginPage from 'views/LoginPage';
+import Finera from 'views/Finera';
 
 const Root = () => (
   <Provider store={store}>
@@ -23,6 +24,7 @@ const Root = () => (
           <Route path={routes.article} element={<DetailsPage />} />
           <Route path={routes.twitters} element={<Twitter />} />
           <Route path={routes.twitter} element={<DetailsPage />} />
+          <Route path={routes.finera} element={<Finera />} />
         </Routes>
       </MainTemplate>
     </BrowserRouter>
