@@ -1,6 +1,5 @@
 import { useState, useCallback } from 'react';
 import debounce from 'lodash/debounce';
-import Input from 'components/atoms/Input/Input';
 import axios from 'axios';
 
 const Finera = () => {
@@ -8,11 +7,7 @@ const Finera = () => {
   const [inputData, setInputData] = useState('');
 
   const sendQuery = (query) => {
-    axios
-      .get(
-        'https://api.nasa.gov/planetary/natural?api_key=8ktJZCexrmeN9NO9FGzQbgr9QDmBG6pBkNLGBfkV',
-      )
-      .then((res) => setInputData(res.data.explanation));
+    axios.get(`http://localhost:9000/api/listy/${query}`).then((res) => console.log(res.data));
   };
 
   const delayedSearch = useCallback(
@@ -27,7 +22,7 @@ const Finera = () => {
   return (
     <>
       <input value={inputValue} onChange={handleChange} />
-      <p>{inputData}</p>
+      <p>s</p>
     </>
   );
 };
